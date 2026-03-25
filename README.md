@@ -2,9 +2,6 @@
 /># 60W GaN-Based Synchronous Buck Converter for Avionics Systems
 
 ![Altium 3D Render]
-<img width="1916" height="899" alt="image" src="https://github.com/user-attachments/assets/9239985d-b478-438b-92ad-2aa4ccca5e51" />
-
-
 
 ## 📌 Project Overview
 This project is a high-frequency, GaN (Gallium Nitride) based synchronous buck converter hardware designed for critical loads in avionics systems, such as mission computers and telemetry modules. Unlike traditional Si-MOSFET designs, it utilizes EPC2218 GaN FETs and the LTC7891 controller to minimize switching losses and achieve fanless cooling.
@@ -44,7 +41,7 @@ Prior to physical manufacturing, the system was subjected to dynamic stress test
    *(See: /Measurements/Startup_Graph.png)* <img width="1916" height="899" alt="image" src="https://github.com/user-attachments/assets/22290ce3-c2a8-45b3-91d0-627af600b1b7" />
 
 2. **Load Transient Response:** During sudden load steps from 0.5A to 5A (10% -> 100%), voltage fluctuation is limited to 2.2% (254mV), and the controller restores regulation within 150 µs.
-   *(See: /Measurements/Transient_Graph.png)* ![Uploading image.png…]()
+   *(See: /Measurements/Transient_Graph.png)* <img width="1916" height="899" alt="image" src="https://github.com/user-attachments/assets/9239985d-b478-438b-92ad-2aa4ccca5e51" />
 
 
 3. **Voltage Ripple:** With 500 kHz switching and a low-ESR ceramic hybrid capacitor array, the output ripple at full load (5A) is reduced to **<10mV**.
