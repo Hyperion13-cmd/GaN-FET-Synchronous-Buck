@@ -1,6 +1,9 @@
-# 60W GaN-Based Synchronous Buck Converter for Avionics Systems
+<img width="875" height="631" alt="image" src="https://github.com/user-attachments/assets/fefb632a-82e4-44ec-9255-b771a2b96a0f" /># 60W GaN-Based Synchronous Buck Converter for Avionics Systems
 
-![Altium 3D Render]([BURAYA ALTIUM 3D RENDER GÖRSELİNİN LİNKİNİ EKLE])
+![Altium 3D Render]
+![Uploading image.png…]()
+
+
 
 ## 📌 Project Overview
 This project is a high-frequency, GaN (Gallium Nitride) based synchronous buck converter hardware designed for critical loads in avionics systems, such as mission computers and telemetry modules. Unlike traditional Si-MOSFET designs, it utilizes EPC2218 GaN FETs and the LTC7891 controller to minimize switching losses and achieve fanless cooling.
