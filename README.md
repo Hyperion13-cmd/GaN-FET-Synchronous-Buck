@@ -2,53 +2,53 @@
 
 ![Altium 3D Render]([BURAYA ALTIUM 3D RENDER GÖRSELİNİN LİNKİNİ EKLE])
 
-## 📌 Proje Özeti (Project Overview)
-[cite_start]Bu proje, aviyonik sistemlerin görev bilgisayarları ve telemetri modülleri gibi kritik yükleri için tasarlanmış yüksek frekanslı, GaN (Galyum Nitrür) tabanlı bir senkron düşürücü (Buck) dönüştürücü donanımıdır[cite: 233, 234, 886]. [cite_start]Geleneksel Si-MOSFET tasarımlarının aksine, EPC2218 GaN FET'ler ve LTC7891 kontrolcüsü kullanılarak anahtarlama kayıpları minimize edilmiş ve fansız soğutma hedeflenmiştir[cite: 235, 238, 242, 595].
+## 📌 Project Overview
+This project is a high-frequency, GaN (Gallium Nitride) based synchronous buck converter hardware designed for critical loads in avionics systems, such as mission computers and telemetry modules. Unlike traditional Si-MOSFET designs, it utilizes EPC2218 GaN FETs and the LTC7891 controller to minimize switching losses and achieve fanless cooling.
 
-### ⚙️ Temel Sistem İsterleri (System Specifications)
-* [cite_start]**Giriş Gerilimi (Vin):** 18V - 36V DC (Aviyonik Batarya Standardı) [cite: 187, 502, 576]
-* [cite_start]**Çıkış Gerilimi (Vout):** 12V DC (Sabit) [cite: 187, 502]
-* [cite_start]**Maksimum Çıkış Akımı (Iout):** 5A [cite: 502]
-* [cite_start]**Maksimum Güç:** 60W [cite: 886, 890]
-* [cite_start]**Anahtarlama Frekansı (Fsw):** 500 kHz [cite: 188, 506]
-* [cite_start]**Tepe Verimlilik (Peak Efficiency):** %95.8 (Tam Yükte) [cite: 707, 890]
-* [cite_start]**Kontrol Topolojisi:** Peak Current Mode Control (LTC7891) [cite: 189, 242]
-
----
-
-## 🔬 Kritik Donanım Tasarım Çözümleri (Hardware Highlights)
-
-### 1. Sinyal Bütünlüğü ve EMI Yönetimi (4-Layer Stack-Up)
-[cite_start]GaN FET'lerin yüksek $dv/dt$ anahtarlama hızlarından (100V/ns) kaynaklı EMI yayılımını baskılamak için IPC standartlarında 4 katmanlı (4-Layer) PCB mimarisi kullanılmıştır[cite: 719, 720, 721]. 
-* [cite_start]**Layer 2 (GND Plane):** Layer 1'deki yüksek $di/dt$ döngülerinin hemen altına kesintisiz bir Toprak düzlemi yerleştirilerek dönüş akımlarına (Return Path) en kısa yol sağlanmış ve elektromanyetik yayılım engellenmiştir[cite: 726, 727, 899].
-* [cite_start]**Via Shielding:** Analog sinyal hatlarının etrafı GND dikişleriyle (Via Stitching) kapatılarak Faraday Kafesi etkisi yaratılmıştır[cite: 803].
-
-### 2. Hassas Akım Okuma (Kelvin Sensing)
-[cite_start]Sistemin kararlılığı için kritik olan $R_{SENSE}$ akım geri beslemesi, direnç pedlerinin iç kısmından alınan "Diferansiyel Kelvin Bağlantısı" ile sağlanmıştır[cite: 796, 797]. [cite_start]Sense yollarının Layer 3'teki güç düzleminden etkilenmemesi için "Polygon Cutout" yöntemi uygulanarak gürültü izolasyonu maksimize edilmiştir[cite: 799, 800].
-
-### 3. Çok Katmanlı Aviyonik Koruma (Protection Stage)
-* [cite_start]**Ters Polarite Koruması:** İletim kayıplarını sıfıra indirmek için geleneksel diyot yerine düşük $R_{DS(on)}$ değerli P-Kanal MOSFET (Vishay SQJ459EP) kullanılmıştır[cite: 651, 653, 656].
-* [cite_start]**Geçici Gerilim (Surge) Koruması:** Giriş hattındaki ani voltaj sıçramalarını sönümlemek için 40V Stand-off gerilimine sahip SMAJ40A-HT TVS diyot kullanılmıştır[cite: 657, 658, 659].
+### ⚙️ System Specifications
+* **Input Voltage (Vin):** 18V - 36V DC (Avionics Battery Standard)
+* **Output Voltage (Vout):** 12V DC (Fixed)
+* **Maximum Output Current (Iout):** 5A
+* **Maximum Power:** 60W
+* **Switching Frequency (Fsw):** 500 kHz
+* **Peak Efficiency:** 95.8% (At Full Load)
+* **Control Topology:** Peak Current Mode Control (LTC7891)
 
 ---
 
-## 📊 Simülasyon ve Doğrulama (LTSpice Results)
+## 🔬 Hardware Design Highlights
 
-[cite_start]Sistem fiziksel üretim öncesi LTSpice ortamında dinamik stres testlerine tabi tutulmuştur[cite: 676]:
+### 1. Signal Integrity and EMI Management (4-Layer Stack-Up)
+To suppress EMI radiation caused by the high $dv/dt$ switching speeds (100V/ns) of GaN FETs, an IPC-standard 4-layer PCB architecture was implemented. 
+* **Layer 2 (GND Plane):** An uninterrupted Ground plane is placed directly beneath the high $di/dt$ loops on Layer 1, providing the shortest return path and mitigating electromagnetic emissions.
+* **Via Shielding:** Analog signal traces are surrounded by GND via stitching to create a Faraday Cage effect.
 
-1. [cite_start]**Start-Up Tepkisi:** 100nF Soft-Start kapasitörü sayesinde sistem herhangi bir aşım (overshoot) yapmadan 7 ms içerisinde 12V kararlı duruma ulaşır[cite: 680, 681].
-   *(Bkz: /Measurements/Startup_Graph.png)* ![Start-Up]([BURAYA START-UP GRAFİĞİNİ EKLE])
+### 2. Precision Current Sensing (Kelvin Sensing)
+The $R_{SENSE}$ current feedback, critical for system stability, is achieved using a "Differential Kelvin Connection" routed from the inner side of the resistor pads. To prevent the sense traces from being affected by the power plane on Layer 3, a "Polygon Cutout" method was applied to maximize noise isolation.
 
-2. **Yük Değişim Tepkisi (Load Transient):** 0.5A'den 5A'e (%10 -> %100) ani yük çıkışlarında voltaj dalgalanması %2.2 (254mV) ile sınırlı kalmış ve kontrolcü 150 µs içerisinde regülasyonu yeniden sağlamıştır[cite: 694, 695, 696, 894, 895].
-   *(Bkz: /Measurements/Transient_Graph.png)* ![Transient]([BURAYA TRANSIENT GRAFİĞİNİ EKLE])
-
-3. [cite_start]**Çıkış Dalgacığı (Voltage Ripple):** 500 kHz anahtarlama ve düşük ESR'li seramik hibrit kapasitör dizilimi ile tam yükte (5A) çıkış ripple değeri **<10mV** seviyesine indirilmiştir[cite: 700, 701].
+### 3. Multi-Layer Avionics Protection Stage
+* **Reverse Polarity Protection:** To eliminate conduction losses, a P-Channel MOSFET (Vishay SQJ459EP) with low $R_{DS(on)}$ is used instead of a traditional diode.
+* **Transient Voltage (Surge) Protection:** An SMAJ40A-HT TVS diode with a 40V stand-off voltage is utilized to clamp sudden voltage spikes on the input line.
 
 ---
 
-## 📁 Depo İçeriği (Repository Structure)
+## 📊 Simulation and Validation (LTSpice Results)
 
-* `\Hardware_Source`: Altium Designer proje dosyaları (.PrjPcb, .SchDoc, .PcbDoc).
-* `\Simulation`: LTSpice doğrulama dosyaları ve analiz grafikleri.
-* `\Manufacturing`: Üretime hazır Gerber, NC Drill dosyaları ve Endüstriyel BOM listesi.
-* `\Docs`: GaN FET ve LTC7891 detaylı veri sayfaları.
+Prior to physical manufacturing, the system was subjected to dynamic stress tests in the LTSpice environment:
+
+1. **Start-Up Response:** Thanks to the 100nF Soft-Start capacitor, the system reaches a stable 12V within 7 ms without any overshoot.
+   *(See: /Measurements/Startup_Graph.png)* ![Start-Up]([BURAYA START-UP GRAFİĞİNİ EKLE])
+
+2. **Load Transient Response:** During sudden load steps from 0.5A to 5A (10% -> 100%), voltage fluctuation is limited to 2.2% (254mV), and the controller restores regulation within 150 µs.
+   *(See: /Measurements/Transient_Graph.png)* ![Transient]([BURAYA TRANSIENT GRAFİĞİNİ EKLE])
+
+3. **Voltage Ripple:** With 500 kHz switching and a low-ESR ceramic hybrid capacitor array, the output ripple at full load (5A) is reduced to **<10mV**.
+
+---
+
+## 📁 Repository Structure
+
+* `\Hardware_Source`: Altium Designer project files (.PrjPcb, .SchDoc, .PcbDoc).
+* `\Simulation`: LTSpice validation files and analysis graphs.
+* `\Manufacturing`: Production-ready Gerber, NC Drill files, and Industrial BOM list.
+* `\Docs`: Detailed datasheets for GaN FET and LTC7891.
