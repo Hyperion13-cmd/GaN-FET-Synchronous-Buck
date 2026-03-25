@@ -1,6 +1,6 @@
-<img width="875" height="631" alt="image" src="https://github.com/user-attachments/assets/fefb632a-82e4-44ec-9255-b771a2b96a0f" 
+<img width="875" height="631" alt="image" src="https://github.com/user-attachments/assets/fefb632a-82e4-44ec-9255-b771a2b96a0f" />
 
-  /># 60W GaN-Based Synchronous Buck Converter for Avionics Systems
+# 60W GaN-Based Synchronous Buck Converter for Avionics Systems
 
 ![Altium 3D Render]
 
