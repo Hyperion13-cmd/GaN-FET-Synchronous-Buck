@@ -1,7 +1,8 @@
-<img width="875" height="631" alt="image" src="https://github.com/user-attachments/assets/fefb632a-82e4-44ec-9255-b771a2b96a0f" /># 60W GaN-Based Synchronous Buck Converter for Avionics Systems
+<img width="875" height="631" alt="image" src="https://github.com/user-attachments/assets/fefb632a-82e4-44ec-9255-b771a2b96a0f" 
+/># 60W GaN-Based Synchronous Buck Converter for Avionics Systems
 
 ![Altium 3D Render]
-![Uploading image.png…]()
+<img width="1916" height="899" alt="image" src="https://github.com/user-attachments/assets/9239985d-b478-438b-92ad-2aa4ccca5e51" />
 
 
 
@@ -40,10 +41,11 @@ The $R_{SENSE}$ current feedback, critical for system stability, is achieved usi
 Prior to physical manufacturing, the system was subjected to dynamic stress tests in the LTSpice environment:
 
 1. **Start-Up Response:** Thanks to the 100nF Soft-Start capacitor, the system reaches a stable 12V within 7 ms without any overshoot.
-   *(See: /Measurements/Startup_Graph.png)* ![Start-Up]([BURAYA START-UP GRAFİĞİNİ EKLE])
+   *(See: /Measurements/Startup_Graph.png)* <img width="1916" height="899" alt="image" src="https://github.com/user-attachments/assets/22290ce3-c2a8-45b3-91d0-627af600b1b7" />
 
 2. **Load Transient Response:** During sudden load steps from 0.5A to 5A (10% -> 100%), voltage fluctuation is limited to 2.2% (254mV), and the controller restores regulation within 150 µs.
-   *(See: /Measurements/Transient_Graph.png)* ![Transient]([BURAYA TRANSIENT GRAFİĞİNİ EKLE])
+   *(See: /Measurements/Transient_Graph.png)* ![Uploading image.png…]()
+
 
 3. **Voltage Ripple:** With 500 kHz switching and a low-ESR ceramic hybrid capacitor array, the output ripple at full load (5A) is reduced to **<10mV**.
 
